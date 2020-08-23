@@ -1,6 +1,18 @@
 'use strict';
 function calculateTotalMortgage(percent, contribution, amount, date) {
     let input = [percent, contribution, amount, date];
+    if (isNaN(+percent)) {
+        return `Параметр <Процентная ставка> содержит неправильное значение <${percent}>`;
+    }
+    if (isNaN(+contribution)) {
+        return `Параметр <Сумма первоначального взноса> содержит неправильное значение <${contribution}>`;
+    }
+    if (isNaN(+amount)) {
+        return `Параметр <Сумма кредита> содержит неправильное значение <${amount}>`;
+    }
+    if (isNaN(+date)) {
+        return `Параметр <Дата окончания кредита> содержит неправильное значение <${date}>`;
+    }
     for (let i = 0; i < input.length - 1; i++) {
         if (!isNaN(input[i])) {
             input[i] = Number(input[i]);
@@ -24,8 +36,5 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 }
 
 function getGreeting(name) {
-    if (!name) {
-        name = "Аноним"
-    }
-    return `Привет, мир! Меня зовут ${name}`;
+    return (`Привет, мир! Меня зовут ${name || "Аноним"}`);
 }
