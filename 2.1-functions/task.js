@@ -26,7 +26,7 @@ function showSolutionsMessage( a, b, c ) {
     } else console.log(`Уравнение не имеет вещественных корней`);
 }
 
-showSolutionsMessage(1, 10, 5)   ;
+showSolutionsMessage(1, 10, 5);
 
 function getAverageScore(data) {
     let averageMarks = {};
@@ -45,7 +45,6 @@ function getAverageScore(data) {
     averageMarks.average = average;
     console.log(averageMarks);
     return averageMarks;
-
 }
 
 function getAverageMark(marks) {
@@ -72,7 +71,6 @@ function getDecodedValue(secret) {
     if (secret === 0) {
         return 'Родриго'
     } else return 'Эмильо'
-
 }
 
 console.log(getPersonData({aaa: 0, bbb: 1}));
