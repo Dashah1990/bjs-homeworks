@@ -1,9 +1,9 @@
 function parseCount(number) {
-    if (isNaN(Number.parseInt(number))) {
-        let parseCountError = new Error('Невалидное значение');
-        throw parseCountError;
+    let parsingResult = Number.parseInt(number);
+    if (isNaN(parsingResult)) {
+        throw new Error('Невалидное значение');
     }
-    return Number.parseInt(number); 
+    return parsingResult; 
 
 }
 
@@ -19,9 +19,8 @@ class Triangle {
         this.a = a;
         this.b = b;
         this.c = c;
-        if ((this.a + this.b < this.c) || (this.a + this.c < this.b) || (this.c + this.b < this.a)) { //проверяю существует ли треугольник с такими сторонами
-            let triangleError = new Error('Треугольник с такими сторонами не существует');
-            throw triangleError;
+        if ((a + b < c) || (a + c < b) || (c + b < a)) { //проверяю существует ли треугольник с такими сторонами
+            throw new Error('Треугольник с такими сторонами не существует');
         } 
     }
 
@@ -38,24 +37,14 @@ class Triangle {
 
 function getTriangle(a, b, c) {
     try {
-        const newTriangle = new Triangle(a, b, c);
-        return newTriangle;
-    } catch (triangleError) { //пытаюсь перехватить исключение и вернуть объект с двумя методами getArea и getPerimeter, 
-        // которые возвращают строку: "Ошибка! Треугольник не существует". Но не совсем понимаю как это сделать.
-        let objectException = {
-            getArea: function() {
-                return ("Ошибка! Треугольник не существует");
-            },
-            getPerimetr: function() {
-                return ("Ошибка! Треугольник не существует");
-            }
-        }
+        return new Triangle(a, b, c);
+    } catch(e) { //перехватываю исключения
+            let objectException = {
+            getArea: () => "Ошибка! Треугольник не существует",
+            getPerimeter: () => "Ошибка! Треугольник не существует"
+        };
         return objectException;
-        
     }
 }  
 
-
-
-getTriangle(2, 5, 1);
 
