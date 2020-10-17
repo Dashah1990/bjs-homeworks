@@ -26,7 +26,6 @@ function getReliableWeaponsNames (initDurability) {
     .map(weapon => weapon.name);
 }
 
-
 //Задача 2
 
 function sleep(milliseconds) 
