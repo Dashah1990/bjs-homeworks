@@ -15,9 +15,7 @@ function hasReliableWeapons (initDurability) {
 }
 
 function getTotalDamage () {
-    return weapons.reduce((sum, weapon) => {
-        return sum + weapon.getDamage();
-    }, 0);
+    return weapons.reduce((sum, weapon) => sum + weapon.attack, 0);
 }
 
 function getReliableWeaponsNames (initDurability) {
@@ -49,12 +47,12 @@ function compareArrays(arr1, arr2) { //сравнение двух массив�
 function memorize(func, limit) {
     const memory = [];
     return function(...args) {
-        const foundObject = memory.find(mem => compareArrays(mem.argss, args));
+        const foundObject = memory.find(mem => compareArrays(mem.args, args));
         if (foundObject) {
             return foundObject.result;
         } 
         const result = func(...args);
-        memory.push({argss: args, result: result});
+        memory.push({args, result});
         if (memory.length > limit) {
             memory.shift();
         }
