@@ -24,18 +24,18 @@ class AlarmClock {
         }
     }
 
-    getCurrentFormattedTime() { //возвращает текущее время
-        return new Date().toLocaleTimeString().slice(0,-3);
-    }
+    getCurrentFormattedTime = () => //возвращает текущее время
+        new Date().toLocaleTimeString().slice(0,-3);
+    
 
     start() { //запускает все звонки
         function checkClock(alarm) {
-            if (phoneAlarm.getCurrentFormattedTime() === this.alarm.time) {
+            if (this.getCurrentFormattedTime() === alarm.time) {
                 alarm.fn()
             } 
         }
         if (this.timerId === null) {
-            this.timerId = setInterval(this.alarmCollection.forEach(alarm => checkClock)); 
+            this.timerId = setInterval(() => this.alarmCollection.forEach(alarm => checkClock(alarm)), 1000); 
         }        
     }
 
