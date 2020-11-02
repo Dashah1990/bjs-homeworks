@@ -29,6 +29,11 @@ class AlarmClock {
     
 
     start() { //запускает все звонки
+        checkClock = (alarm) => {if (this.getCurrentFormattedTime() === alarm.time) {
+                alarm.fn()}
+        }
+            
+        
         function checkClock(alarm) {
             if (this.getCurrentFormattedTime() === alarm.time) {
                 alarm.fn()
@@ -58,10 +63,10 @@ class AlarmClock {
 }
 
 let phoneAlarm = new AlarmClock();
-phoneAlarm.addClock('21:35', () => console.log('Пора вставать'), 1);
-phoneAlarm.addClock('09:01', () => console.log('Давай вставай уже!'), 2);
+phoneAlarm.addClock('17:44', () => console.log('Пора вставать'), 1);
+phoneAlarm.addClock('17:49', () => {console.log('Давай вставай уже!'); phoneAlarm.removeClock(2)}, 2);
 //phoneAlarm.addClock('09:01', () => console.log('Иди умываться'));
-phoneAlarm.addClock('09:02', () => {
+phoneAlarm.addClock('17:50', () => {
     console.log('Вставай, а то проспишь!');
     phoneAlarm.clearAlarms();
     phoneAlarm.printAlarms();
