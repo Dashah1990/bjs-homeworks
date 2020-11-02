@@ -29,15 +29,8 @@ class AlarmClock {
     
 
     start() { //запускает все звонки
-        checkClock = (alarm) => {if (this.getCurrentFormattedTime() === alarm.time) {
+        let checkClock = (alarm) => {if (this.getCurrentFormattedTime() === alarm.time) {
                 alarm.fn()}
-        }
-            
-        
-        function checkClock(alarm) {
-            if (this.getCurrentFormattedTime() === alarm.time) {
-                alarm.fn()
-            } 
         }
         if (this.timerId === null) {
             this.timerId = setInterval(() => this.alarmCollection.forEach(alarm => checkClock(alarm)), 1000); 
